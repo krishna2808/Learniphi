@@ -322,9 +322,10 @@ form input {
 
 
 form .btn {
-  width: 100%;
+  width: 70%;
   border: none;
   cursor: pointer;
+  font-size: 18px;
   margin: 10px;
 }
 form .btn:focus {
