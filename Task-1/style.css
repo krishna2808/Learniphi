@@ -45,7 +45,7 @@ col-2 {
 
   align-items: center;
   flex-wrap: wrap;
-  height: 300px;
+  height: 180%;
   justify-content: space-around;
 }
 
@@ -105,7 +105,7 @@ p {
 }
 
 .categories {
-  margin: 70px 0;
+  margin: 0px 0;
 }
 
 .col-3 {
@@ -381,4 +381,8 @@ form a {
 
 .bg-product{
   background-color:  #ffffcc;
+}
+
+.bg-color{
+  background-color: blueviolet;
 }
