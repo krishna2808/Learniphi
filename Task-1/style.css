@@ -23,6 +23,7 @@ col-2 {
 .col-2 img {
   max-width: 100%;
   padding: 50px 0;
+  margin-left: 15%;
   /* top and bottom 50 left and right 0 */
 }
 .col-2 h1 {
