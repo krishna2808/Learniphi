@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{ title }} {% endblock title %}
+
+{% block body %}
+
+
+<div class="header-below"> 
+
+    <div class="container ">
+
+      <!-- <div class="row"> -->
+  
+        <div class="col-2  ">
+          <h1>
+            Best Ecommerce Site !
+          </h1>
+          <p>
+            An e-commerce website is one that allows people to buy and sell physical goods, services, and digital products over the internet rather than at a brick-and-mortar location. Through an e-commerce website, a business can process orders, accept payments, manage shipping and logistics, and provide customer service.
+          </p>  <br> <br>
+         
+        </div>
+       
+      <!-- </div> -->
+  
+  
+    </div>
+     
+
+
+
+   </div>
+ 
+  <div class="bg-color">   <br>
+
+
+    <div class="categories" id="product">
+      <div class="small-container">
+
+        <h2 class="title">Category Products</h2>
+        <div class="row bg-product">
+  
+
+
+ 
+          <div class="col-3 ">
+
+            <div class="category-content"> <br> <br>
+              <h2> Pants </h2>
+              <b>  Bondage Pants    </b> <br>
+              <b>  Fisherman Pants    </b>  <br>
+              <b>  Hammer Pants   </b> <br>
+              <b>  Hiking Pants  </b>  <br>
+              <b>  Jeans Pants    </b>  <br>
+              <b>  Overalls Pants    </b>  <br>
+              
+
+              
+  
+            </div>
+          
+
+            <img src="images/category-1.jpg" alt="" />
+          </div>
+          <div class="col-3">
+
+            <div class="category-content"> <br> <br>
+              <h2> SHOES </h2>
+              <b>  Sneakers shoes   </b> <br>
+              <b>  Loafer shoes   </b>  <br>
+              <b>  Boot shoes </b> <br>
+              <b>  Sandal shoes </b>  <br>
+              <b>  Jeans shoes  </b>  <br>
+              <b>  Sports shoes   </b>  <br>
+
+  
+            </div>
+            <img src="images/category-2.jpg" alt="" />
+          </div>
+          <div class="col-3">
+
+            <div class="category-content"> <br> <br>
+              <h2> T-SHIRT </h2>
+              <b>  V-neck T-shirt   </b> <br>
+              <b>  The ringer T-shirt.  </b>  <br>
+              <b>  The cap-sleeve T-shirt </b> <br>
+              <b>  The pocket T-shirt </b>  <br>
+              <b>  The turtle-neck T-shirt  </b>  <br>
+              <b>  The singlet T-shirt  </b>  <br>
+
+  
+            </div>
+            <img src="images/category-3.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div> <br>
+
+    <div class="small-container">
+      <h2 class="title">Featured Products</h2>
+      <div class="row bg-product">
+
+        <div class="col-4 ">
+
+        <div class="detail-content"> <br> <br>
+              <h3> Red T-Shirt </h3>
+              <b> Pices :  </b> 40 <br>
+              <b> Price :  </b> 45 <br>
+       
+
+        </div>
+
+        
+            <img src="images/product-1.jpg" alt=""/>
+            <h4>Red    T-shirt</h4>
+
+            <p>Rs 50.00</p>
+        </div>
+
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> SHOES </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 50 <br>
+     
+
+      </div>
+          <img src="images/product-2.jpg" alt="" />
+          <h4>SHOES</h4>
+          
+          <p>Rs 50.00</p>
+        </div>
+
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> SHOES</h3>
+            <b> Pices :  </b> 1140 <br>
+            <b> Price :  </b> 50 <br>
+     
+
+      </div>
+          <img src="images/product-3.jpg" alt="" />
+          <h4>SHOES</h4>
+         
+          <p>Rs 400.00</p>
+        </div>
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> BLUE T-Shirt </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 100 <br>
+     
+          </div>
+
+
+          <img src="images/product-4.jpg" alt="" />
+          <h4>BLUE  T-shirt</h4>
+          
+          <p>Rs 50.00</p>
+        </div>
+      </div> <br>
+
+
+
+
+      <h2 class="title">Latest Products</h2>
+      <div class="row bg-product">
+        {% for product in products %} 
+
+            <div class="col-4">
+              <div class="detail-content"> <br> <br>
+                <h3> Red T-Shirt </h3>
+                <b> Pices :  </b> 40 <br>
+                <b> Price :  </b> 50 <br>
+
+              </div>
+
+              <img src="{{ product.image.url  }}" alt="" />
+              <h4>{{ product.name }}</h4>
+            
+              <p>Rs : {{product.price}}</p>
+            </div>
+
+
+        {% endfor %}
+        
+        <!-- <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> Red T-Shirt </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 50 <br>
+
+          </div>
+
+          <img src="images/product-5.jpg" alt="" />
+          <h4>Red    T-shirt</h4>
+         
+          <p>Rs 50.00</p>
+        </div>
+
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> Red T-Shirt </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 50 <br>
+          </div>
+
+          <img src="images/product-6.jpg" alt="" />
+          <h4>Red    T-shirt</h4>
+          
+          <p>Rs 50.00</p>
+        </div>
+
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> Red T-Shirt </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 50 <br>
+     
+
+          </div> 
+
+
+          <img src="images/product-7.jpg" alt="" />
+          <h4>Red    T-shirt</h4>
+          
+          <p>Rs 50.00</p>
+        </div>
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> Red T-Shirt </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 50 <br>
+     
+
+          </div>
+          <img src="images/product-8.jpg" alt="" />
+          <h4>Red    T-shirt</h4>
+          
+          <p>Rs 50.00</p>
+        </div>
+      </div> -->
+
+
+
+
+
+      <!-- <div class="row bg-product">
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> Red T-Shirt </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 50 <br>
+     
+
+          </div> 
+          <img src="images/product-9.jpg" alt="" />
+          <h4>Red    T-shirt</h4>
+        
+          <p>Rs 50.00</p>
+        </div>
+
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> Red T-Shirt </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 50 <br>
+     
+
+          </div>
+          <img src="images/product-10.jpg" alt="" />
+          <h4>Red    T-shirt</h4>
+          
+          <p>Rs 50.00</p>
+        </div>
+
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> Red T-Shirt </h3>
+            <b> Pices :  </b> 40 <br>
+            <b> Price :  </b> 50 <br>
+     
+
+          </div>
+          <img src="images/product-11.jpg" alt="" />
+          <h4>Red    T-shirt</h4>
+          <p>Rs 50.00</p>
+        </div>
+        <div class="col-4">
+          <div class="detail-content"> <br> <br>
+            <h3> Pants </h3>
+            <b> Pices :  </b> 170 <br>
+            <b> Price :  </b> 55 <br>
+     
+
+          </div>
+          <img src="images/product-12.jpg" alt="" />
+          <h4>Pant</h4>
+          
+          <p>Rs 150.00</p>
+        </div>
+      </div> -->
+    </div> <br> <br>
+
+
+
+
+
+
+
+{% endblock body%}

@@ -1,0 +1,78 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> {% block title %} Ecommerce Website {% endblock title %}</title>
+    
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"> 
+
+    {% block custom_css %} 
+
+        <link rel="stylesheet" href="{% static 'user/css/style.css' %}" />
+
+    {% endblock custom_css%}
+
+  </head>
+  <body>
+   <!-- <div class="container"> -->
+
+    {% block navbar %} 
+
+
+            <div class="header">
+                <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                    <a href="index.html">
+                        <img src="{% static 'user/images/logo5.png'%}" alt="" width="125px"
+                    /></a>
+                    </div>
+                    <nav>
+                    <ul id="MenuItems">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#product">Products</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#account">Account</a></li>
+                        <li><a href="#Order">Order</a></li>
+                        <li><a href="#Cart">Cart</a></li>
+                    
+                    </ul>
+                    </nav>
+            
+                </div>
+                </div>
+            </div>
+        
+            
+            
+    
+    {% endblock navbar %}
+
+    {% block body %}
+    
+    
+    
+    {% endblock body %}
+  
+
+  
+
+  
+
+
+  <!-- <script type="text/javascript" src="main.js"></script> -->
+
+
+
+  </body>
+</html>
