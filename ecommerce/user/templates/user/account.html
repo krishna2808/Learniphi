@@ -28,11 +28,12 @@
                     <hr id="indicator" />
                     </div>
                     
-                    <form action="" id="LoginForm" method="POST">
+                    <form action="" id="LoginForm" method="POST" novalidate>
                         {% csrf_token %}
 
                         {% for form_content in signin_form %}
                              {{ form_content }}
+                             {{ form_content.errors }}
                                
                         {% endfor %}
                     <!-- <input type="text" placeholder="Username" />
@@ -41,13 +42,14 @@
                     <button type="submit" class="btn">Login</button>
                     <a href="">Forgot Password</a>
                     </form>
-                    <form action="" id="RegForm" method="POST">
+                    <form action="" id="RegForm" method="POST" novalidate>
                         {% csrf_token %}
                     <!-- <input type="text" placeholder="Username" />
                     <input type="email" placeholder="Email" />
                     <input type="password" placeholder="Password" /> -->
                     {% for form_content in signup_form %}
                         {{ form_content }}
+                        {{ form_content.errors }}
                       
                     {% endfor %}
 

@@ -5,28 +5,33 @@ from .models import Product, Category, ProductProperty, Cart, Order
 
 
 @admin.register(Category)
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name',) 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'image') 
 @admin.register(Product)
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('id','category', 'rating', 'name', 'stock', 'description', 'image', 'price') 
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('id','category', 'rating', 'name', 'stock', 'description', 'image', 'actual_price', 'price', 'rating')
+    list_editable = ('actual_price', 'price', 'stock')
+
+ 
 
 
 
 @admin.register(ProductProperty)
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('product_name', 'name', 'rating', 'stock', 'description', 'image', 'price', 'rating') 
+class ProductPropertyAdmin(admin.ModelAdmin):
+    list_display = ('product_name', 'name', 'rating', 'stock', 'description', 'image', 'actual_price', 'price', 'rating') 
+    list_editable = ('actual_price', 'price', 'stock')
 
 
 
 @admin.register(Cart)
-class AuthorAdmin(admin.ModelAdmin):
+class CartAdmin(admin.ModelAdmin):
     list_display = ('user', 'product_property', 'is_not_order') 
 
 
 @admin.register(Order)
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('user', 'order_item', 'amount', 'date', 'is_receive_product') 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'order_item', 'amount', 'date', 'is_receive_product')
+     
 
 
 

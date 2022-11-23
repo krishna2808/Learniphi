@@ -1,6 +1,7 @@
 body{
 
   font-family: 'Poppins', sans-serif;
+  background-color: blueviolet;
 
 }
 
@@ -41,11 +42,11 @@ col-2 {
 
 .header-below{
   background-color: pink;
-  /* margin-top: 50px; */
+  margin-top: 3%;
   display: flex;
 
   align-items: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   height: 180%;
   justify-content: space-around;
 }
@@ -180,6 +181,7 @@ h4 {
 #MenuItems li a{
 
   text-decoration: none;
+  color: black;
 
 }
 
@@ -428,7 +430,7 @@ a{
 }
 
 .bg-product .col-4 button{
-  background-color: orange;
+  /* background-color: orange; */
   height: 50px;
   width: 50%;
   color: rgb(255, 255, 255);
@@ -447,7 +449,7 @@ a{
   border-radius: 3%;
 }
 .small-container .price_show button{
-  background-color: orange;
+  /* background-color: orange; */
   height: 50px;
   width: 50%;
   color: rgb(255, 255, 255);
@@ -456,4 +458,24 @@ a{
   /* border: none; */
 
 
+}
+
+.small-container .price_show .discount{
+ color: red;
+}
+
+.bg-color .small-container .row .profile-image{
+  margin-top: 2%;
+   background-color:#ffffcc;
+   height: 250px;
+   width: 300px;
+   margin-left: 5%;
+    
+}
+
+.bg-color .small-container .row .profile-image img{
+  height: 100%;
+  width: 100%;
+  
+   
 }

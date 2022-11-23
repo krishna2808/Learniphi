@@ -1,77 +1,74 @@
 {% extends "base.html" %}
 {% load static %}
+{% load mathfilters %}
 
 {% block title %} {{ title }} {% endblock title %}
 
 {% block body %}
-
-    <div class="header-below"> 
-
-        <div class="container ">
-
-        <!-- <div class="row"> -->
-    
-            <div class="col-2  ">
-            <h1>
-                Best Ecommerce Site !
-            </h1>
-            <p>
-                An e-commerce website is one that allows people to buy and sell physical goods, services, and digital products over the internet rather than at a brick-and-mortar location. Through an e-commerce website, a business can process orders, accept payments, manage shipping and logistics, and provide customer service.
-            </p>  <br> <br>
-            
-            </div>
-        
-          <!-- </div> -->
-    
-    
-        </div>
-
-    </div>
+{{ block.super }}
  
     <div class="bg-color">   <br>
 
 
     
 
-            <div class="small-container">
-            
+        <div class="small-container">
+     
 
 
-                    
-                <h2 class="title">SHOW ORDER PRODUCT</h2>
+            {% if order_item_queryset%}
+                <h2 class="title">Latest Products</h2>
                 <div class="row bg-product">
+                                    
+
                     {% for product in order_item_queryset %} 
 
-                        <div class="col-4">
-                        <!-- <div class="detail-content"> <br> <br>
-                            <h3> {{ product }} </h3>
-                            <b> stock :  </b> {{product.stock}}  <br>
-                            <b> Price :  </b> {{product.product_property.price }}  <br>
+                            <div class="col-4">
+                                <!-- <div class="detail-content"> <br> <br>
+                                    <h3> {{ product }} </h3>
+                                    <b> stock :  </b> {{product.stock}}  <br>
+                                    <b> Price :  </b> {{product.product_property.price }}  <br>
 
-                        </div> -->
+                                </div> -->
 
-                        <img src="{{ product.order_item.product_property.image.url  }}" alt="" />
-                        <h3>{{ product.order_item.product_property.name }}</h3>
-                        <p> {{ product.order_item.product_property.description}}</p>
-                        
-                        <h4> <b> Rs : {{ product.order_item.product_property.price }} </b></h4>
-                        
+                                <img src="{{ product.order_item.product_property.image.url  }}" alt="" />
+                                <h3>{{ product.order_item.product_property.name }}</h3>
+                                <p> {{ product.order_item.product_property.description}}</p>
 
-                        <!-- <a href="{% url 'remove_item' id=product.id  %}"><button>  Remove Item </button></a> -->
-                        </div>
+                                
+                                <h4> <b> Rs : {{product.order_item.product_property.price}} &nbsp;&nbsp;&nbsp;<del> {{product.order_item.product_property.actual_price   }}</del>  </b>  </h4>
 
-
-                </div>
-
-                <div class="price_show"> 
-                </div> 
-
-                {% endfor %}
+                                <h4> <b  class="discount" > Discount : {{product.order_item.product_property.actual_price|sub:product.order_item.product_property.price|mul:100|div:product.order_item.product_property.actual_price|floatformat}} % </b>  </h4> <br>
                 
-                
-            </div> <br> <br>
 
-    </div>
+                                <a href="{% url 'cancel_product' id=product.id  %}"><button class="btn btn-danger">  Cancel Order </button></a>
+                                
+                            </div>
+
+                            <!-- <div class="price_show"> 
+                            </div>  -->
+
+                    {% endfor %}
+                </div>    
+            {% else %}
+
+            <h2 class="title">Order Items Not Available </h2>
+            
+            
+            {% endif %}    
+
+
+
+
+
+
+        </div> <br> <br>
+            
+        
+    </div> 
+
+
+
 
 
 {% endblock body%}

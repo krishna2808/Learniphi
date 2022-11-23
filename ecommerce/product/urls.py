@@ -1,7 +1,8 @@
 
 
 from django.urls import path
-from .views import  dashboard, show_product, add_cart, show_cart, remove_item, order_item, show_order_item
+from .views import  dashboard, show_product, add_cart,\
+show_cart, remove_item, order_item, show_order_item, cancel_product
 
 
 
@@ -13,5 +14,6 @@ urlpatterns = [
     path('remove_item/<int:id>/', remove_item, name= "remove_item"),
     path('order_item/<int:amount>/', order_item, name= "order_item"),
     path('show_order_item/', show_order_item, name= "show_order_item"),
+    path('cancel_product/<int:id>/', cancel_product, name= "cancel_product"),
 
 ]

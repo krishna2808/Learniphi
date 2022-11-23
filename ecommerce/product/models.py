@@ -14,6 +14,8 @@ def rating_validation(value):
 
 class Category(models.Model):
     name = models.CharField(max_length=40)
+    image = models.ImageField(upload_to="images/product/" + str(datetime.datetime.now()) + "/" )
+
     
     def __str__(self):
         return self.name 
@@ -26,7 +28,8 @@ class ProductAbstract(models.Model):
     description = models.CharField(max_length=50)
     image = models.ImageField(upload_to="images/product/" + str(datetime.datetime.now()) + "/" )
     price = models.IntegerField()
-    rating = models.IntegerField(null=True, blank=True, validators=[rating_validation])  
+    rating = models.IntegerField(null=True, blank=True, validators=[rating_validation])
+    actual_price = models.IntegerField(null=True)  
     
     class Meta:
         abstract = True    
