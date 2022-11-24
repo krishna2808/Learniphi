@@ -7,18 +7,13 @@
 {% block body %}
 
 
-
-
 {{ block.super }}
 
-
-
-     
-
-
-
- 
   <div class="bg-color">   <br>
+
+
+    
+    {% include 'messages.html' %}
 
 
     <div class="categories" id="product">
@@ -29,61 +24,16 @@
 
           {% for category_product in category_products %}
              
-          
   
-
 
  
           <div class="col-3 ">
             <img src="{{ category_product.image.url }}" alt="" />
 
-
-            <!-- <div class="category-content"> <br> <br>
-              <h2> Pants </h2>
-              <b>  Bondage Pants    </b> <br>
-              <b>  Fisherman Pants    </b>  <br>
-              <b>  Hammer Pants   </b> <br>
-              <b>  Hiking Pants  </b>  <br>
-              <b>  Jeans Pants    </b>  <br>
-              <b>  Overalls Pants    </b>  <br>
-              
-            </div> -->
-
-
-            <!-- <img src="images/category-1.jpg" alt="" /> -->
           </div>
 
           {% endfor %}
-          <!-- <div class="col-3">
-
-            <div class="category-content"> <br> <br>
-              <h2> SHOES </h2>
-              <b>  Sneakers shoes   </b> <br>
-              <b>  Loafer shoes   </b>  <br>
-              <b>  Boot shoes </b> <br>
-              <b>  Sandal shoes </b>  <br>
-              <b>  Jeans shoes  </b>  <br>
-              <b>  Sports shoes   </b>  <br>
-
-  
-            </div>
-            <img src="images/category-2.jpg" alt="" />
-          </div> -->
-          <!-- <div class="col-3">
-
-            <div class="category-content"> <br> <br>
-              <h2> T-SHIRT </h2>
-              <b>  V-neck T-shirt   </b> <br>
-              <b>  The ringer T-shirt.  </b>  <br>
-              <b>  The cap-sleeve T-shirt </b> <br>
-              <b>  The pocket T-shirt </b>  <br>
-              <b>  The turtle-neck T-shirt  </b>  <br>
-              <b>  The singlet T-shirt  </b>  <br>
-
-  
-            </div>
-            <img src="images/category-3.jpg" alt="" />
-          </div> -->
+         
         </div>
       </div>
     </div> <br>
@@ -92,67 +42,36 @@
       <h2 class="title">Featured Products</h2>
       <div class="row bg-product">
 
-        <div class="col-4 ">
-
-        <div class="detail-content"> <br> <br>
-              <h3> Red T-Shirt </h3>
-              <b> Pices :  </b> 40 <br>
-              <b> Price :  </b> 45 <br>
-       
-
-        </div>
-
-        
-            <img src="images/product-1.jpg" alt=""/>
-            <h4>Red    T-shirt</h4>
-
-            <p>Rs 50.00</p>
-        </div>
-
-        <div class="col-4">
-          <div class="detail-content"> <br> <br>
-            <h3> SHOES </h3>
-            <b> Pices :  </b> 40 <br>
-            <b> Price :  </b> 50 <br>
+        {% for product in feature_product %} 
      
-
-      </div>
-          <img src="images/product-2.jpg" alt="" />
-          <h4>SHOES</h4>
-          
-          <p>Rs 50.00</p>
-        </div>
-
         <div class="col-4">
-          <div class="detail-content"> <br> <br>
-            <h3> SHOES</h3>
-            <b> Pices :  </b> 1140 <br>
-            <b> Price :  </b> 50 <br>
-     
+          <a href="{% url 'show_product' id=product.id %}">
+            <div class="detail-content"> <br> <br>
+              <h3> {{ product.name }} </h3>
+              <b> stock :  </b> {{product.stock}}  <br>
+              <b> Price :  </b> {{product.price}}  <br>
 
-      </div>
-          <img src="images/product-3.jpg" alt="" />
-          <h4>SHOES</h4>
+            </div>
+
+              <img src="{{ product.image.url  }}" alt="" />
+              <h3>{{ product.name }}</h3>
+              <p> {{product.description}}</p>
+            
+              <h4> <b> Rs : {{product.price}} &nbsp;&nbsp;&nbsp;<del> {{product.actual_price   }}</del>  </b>  </h4>
+
+              <h4> <b  class="discount" > Discount : {{product.actual_price|sub:product.price|mul:100|div:product.actual_price|floatformat}} % </b>  </h4>
+
+              <!-- <h4> <b> stock : { {product.stock}} </b></h4> -->
+
+          </a>
          
-          <p>Rs 400.00</p>
         </div>
-        <div class="col-4">
-          <div class="detail-content"> <br> <br>
-            <h3> BLUE T-Shirt </h3>
-            <b> Pices :  </b> 40 <br>
-            <b> Price :  </b> 100 <br>
-     
-          </div>
+    {% endfor %}
+
+   
 
 
-          <img src="images/product-4.jpg" alt="" />
-          <h4>BLUE  T-shirt</h4>
-          
-          <p>Rs 50.00</p>
-        </div>
       </div> <br>
-
-
 
 
       <h2 class="title">Latest Products</h2>
@@ -177,13 +96,10 @@
                   <h4> <b  class="discount" > Discount : {{product.actual_price|sub:product.price|mul:100|div:product.actual_price|floatformat}} % </b>  </h4>
 
                   <!-- <h4> <b> stock : { {product.stock}} </b></h4> -->
-
-              
+ 
               </a>
              
             </div>
-
-
         {% endfor %}
         
         <!-- <div class="col-4">
@@ -308,6 +224,80 @@
 
 
 
-
+   
+ 
 
 {% endblock body%}
+
+
+
+
+{% block footer %}
+
+<!-- Footer -->
+
+
+  <div class="footer" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col-1">
+          <h3>Download Our App</h3>
+          <p>
+            Download App for Android <br />
+            and ios mobile phone
+          </p>
+          <!-- <div class="app-logo">
+            <img src="images/play-store.png" alt="" />
+            <img src="images/app-store.png" alt="" />
+          </div> -->
+        </div>
+        <div class="footer-col-2">
+          <img src="images/logo2.png" alt="" />
+          <p>
+            An e-commerce website is one that allows people to buy and sell physical goods, services, and digital products over the internet rather than at a brick-and-mortar location. Through an e-commerce website, a business can process orders, accept payments, manage shipping and logistics, and provide customer service.
+          </p>
+        </div>
+        <div class="footer-col-3">
+          <h3>Useful Links</h3>
+          <ul>
+            <li>Coupons</li>
+            <li>Blog Post</li>
+            <li>Return Policy</li>
+            <li>Join Affiliate</li>
+          </ul>
+        </div>
+
+        <div class="footer-col-4">
+          <h3>Follow us</h3>
+          <ul>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+            <li>YouTube</li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <p class="copyright">Copyright 2022 - SITE </p>
+    </div>
+    </div>
+
+
+    <!-- <div id="loader" class="center"></div>   -->
+
+
+    <!-- <script type="text/javascript" src="main.js"></script> -->
+
+
+{% endblock footer%}
+
+
+
+
+
+
+
+
+
+
+

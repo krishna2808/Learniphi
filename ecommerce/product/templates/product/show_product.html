@@ -16,19 +16,21 @@
         <div class="small-container">
      
 
-
-            
             <h2 class="title">Latest Products</h2>
+
+            {% include 'messages.html' %}
+
+
             <div class="row bg-product">
                 {% for product in show_products_property %} 
 
                     <div class="col-4">
-                    <!-- <div class="detail-content"> <br> <br>
+                    <div class="detail-content"> <br> <br>
                         <h3> {{ product.name }} </h3>
                         <b> stock :  </b> {{product.stock}}  <br>
                         <b> Price :  </b> {{product.price}}  <br>
 
-                    </div> -->
+                    </div>
 
                     <img src="{{ product.image.url  }}" alt="" />
                     <h3>{{ product.name }}</h3>

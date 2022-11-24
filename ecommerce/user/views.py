@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from user.models import User 
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 
@@ -24,7 +25,8 @@ def account(request):
                     email = signup_form.cleaned_data.get('email')
                     password = signup_form.cleaned_data.get('password')
                     User.objects.create_user(email=email, name=name, password=password).save() 
-                    return  HttpResponseRedirect(reverse('dashboard'))
+                    messages.success(request, 'Your Account Successfully Created !!! ')
+                    return  HttpResponseRedirect(reverse('sign_in'))
                     
           else: 
                signin_form  = UserLogin(request.POST)
@@ -34,6 +36,7 @@ def account(request):
                     user = authenticate(request, email=email , password=password)
                     if user is not None: 
                        login(request, user)  
+                    #    messages.success(request, 'Your Account Successfully Created !!! ')
                        return  HttpResponseRedirect(reverse('dashboard'))
                     #   return HttpResponseRedirect('/dashboard') 
                        
@@ -56,11 +59,10 @@ def profile(request):
         user.mobile_number = request.POST.get('mobile_number')
         user.address = request.POST.get('address')
         user.mobile_number = request.POST.get('mobile_number')
-        print('len(request.FILES)', len(request.FILES))
         if len(request.FILES) != 0 :
             user.pic = request.FILES['pic']
-            print('user image **** ', user.pic )
         user.save()
+        messages.success(request, 'Your Profile Successfully Updated !!! ')
     initial_content = {  'email': user.email, 'name': user.name,  'address' :  user.address, 'mobile_number': user.mobile_number  }
     form = UserProfile(initial=initial_content)    
        

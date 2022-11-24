@@ -16,13 +16,13 @@
      
 
 
-            {% if order_item_queryset%}
-                <h2 class="title">Ordered Products</h2>
+            {% if order_items_queryset %}
+                <h2 class="title">Ordered History</h2>
                 <div class="row bg-product">
                                     
                     {% include 'messages.html' %}
 
-                    {% for product in order_item_queryset %} 
+                    {% for product in order_items_queryset %} 
 
                             <div class="col-4">
                                 <!-- <div class="detail-content"> <br> <br>
@@ -42,7 +42,7 @@
                                 <h4> <b  class="discount" > Discount : {{product.order_item.product_property.actual_price|sub:product.order_item.product_property.price|mul:100|div:product.order_item.product_property.actual_price|floatformat}} % </b>  </h4> <br>
                 
 
-                                <a href="{% url 'cancel_product' id=product.id  %}"><button class="btn btn-danger">  Cancel Order </button></a>
+                                <!-- <a href="{% url 'cancel_product' id=product.id  %}"><button class="btn btn-danger">  Cancel Order </button></a> -->
                                 
                             </div>
 
@@ -53,7 +53,7 @@
                 </div>    
             {% else %}
 
-            <h2 class="title">Order Items Not Available </h2>
+            <h2 class="title">Ordered Empty History </h2>
             
             
             {% endif %}    

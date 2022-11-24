@@ -31,6 +31,8 @@ class CartAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'order_item', 'amount', 'date', 'is_receive_product')
+    list_editable = ('is_receive_product', )
+    
      
 
 

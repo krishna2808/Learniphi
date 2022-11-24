@@ -20,7 +20,7 @@
 
 
             {% if cart_queryset %} 
-            <h2 class="title">Latest Products</h2>
+            <h2 class="title">Cart Products</h2>
             <div class="row bg-product">
 
 
@@ -29,7 +29,7 @@
                 <div class="col-4">
                 <div class="detail-content"> <br> <br>
                     <h3> {{ product }} </h3>
-                    <b> stock :  </b> {{product.stock}}  <br>
+                    <b> stock :  </b> {{product.product_property.stock}}  <br>
                     <b> Price :  </b> {{product.product_property.price }}  <br>
 
                 </div>
