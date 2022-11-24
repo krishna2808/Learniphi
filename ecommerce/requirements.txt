@@ -8,3 +8,10 @@ Pillow==7.2.0
 pkg-resources==0.0.0
 pytz==2022.6
 sqlparse==0.4.3
+Django==2.2
+django-mathfilters==1.0.0
+gunicorn==20.1.0
+Pillow==7.2.0
+pkg-resources==0.0.0
+pytz==2022.6
+sqlparse==0.4.3
