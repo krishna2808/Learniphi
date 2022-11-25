@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from django.contrib.messages import constants as messages
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +27,7 @@ SECRET_KEY = 'z_gwn%3%yz$r7bup6h!@r3!_j2wq$(rwz8o!140-d5dsj1*7x*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [‘https://ecommerce2808.herokuapp.com', ‘localhost’, ‘127.0.0.1’]
 
 TEMPLATES_DIRS = os.path.join(BASE_DIR,'templates')
 
@@ -140,3 +141,5 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
  }
+
+django_heroku.settings(locals())
