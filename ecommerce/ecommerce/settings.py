@@ -126,9 +126,6 @@ AUTH_USER_MODEL = 'user.User'
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = "/var/www/example.com/static/"
-
-
 
 MEDIA_URL = '/media/'
 
