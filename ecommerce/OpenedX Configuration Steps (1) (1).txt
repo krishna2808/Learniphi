@@ -1,0 +1,118 @@
+*****Steps for openedX configuartion using Docker:*****
+
+01) First Install Docker in your system.(link for docker download: https://www.docker.com/products/docker-desktop)
+
+02) Download git and install in your system.(link for git download: https://git-scm.com/downloads)
+
+03) Open your start menu and open the PowerShell.
+
+04) In powershell show your git is installed or not check.
+    Command : git
+
+05) In powershell use this path for configuration C:\Users\*Your system Account Name*\
+
+06) In powesheell create a new folder.
+    Command: md edX-docker
+
+07) After this create folder go inside the folder.
+    Command: cd edx-docker.
+08) Now we can clone the devstack.(Note: this link is available in here https://github.com/edx/devstack)
+    Command is: git clone https://github.com/edx/devstack.git
+
+09) After the completion clone, you go to the devstack.
+    Command : cd devstack
+
+10) Now we can get the check out of koa.master.
+    Command : git checkout open-release/koa.master
+
+11) Now we can open the text editor and open the devstack folder in text editor.
+
+12) Now open the docker-compose.yml file.
+
+13) Find lms: and in lms depend_on: comment the Firefox and chrome.(Note: Firefox and chrome used for testing purposes so you don't have to use them right now.)
+
+14) Same steps above we can follow for Studio find studio: and in studio depend_on: comment the Firefox and chrome.
+
+15) Now again go to lms and inside this you show the image name like this *edxops/edxapp:${OPENEDX_RELEASE:-latest}*
+
+16) Now we will rename the image above and give it this new name everywhere : edxops/edxapp:koa.master
+
+17) Now we go to again powershell and up the image of lms. 
+    Command: docker-compose up -d lms (Note: This much take a long time for download)
+
+18) Now first of we go to lms bash.
+    Command: docker exec -it edx.devstack.lms bash
+
+19) First goto virtual environment edxapp.
+    Command: source /edx/app/edxapp/edxapp_env && cd /edx/app/edxapp/edx-platform
+
+20) After the bash we take clone for edx-platform.
+    Command: git clone https://github.com/edx/edx-platform.git
+
+21) After this we are go to the inside the created edx-plarfrom.
+    Command: source /edx/app/edxapp/edxapp_env && cd/edx/app/edxapp/edx-platform
+
+22) Now we get checkout of koa.master inside the edx-platform.
+    Command : git checkout open-release/koa.master
+
+23) Editor is not installed before so we need to install it seperately.
+    Command : apt-get install nano
+
+24) Now we use mysql and mongodb command in outside of bash directory.(Note:You can use ctrl + d key go for outside of lms/studio bash. *OR* you can run this command in command line prompt)
+    Command for mysql : docker-compose exec -T mysql57 bash -c "mysql -uroot mysql" < provision.sql
+    Command for mongodb : docker exec -i edx.devstack.mongo mongo < mongo-provision.js
+
+25) We will again go to lms bash using above describe command and inside the bash we can activate our virtual environment.
+    Command for lms bash : docker exec -it edx.devstack.lms bash
+    Command for activate environment : source /edx/app/edxapp/edxapp_env && cd /edx/app/edxapp/edx-platform
+
+26) This command use for updating static files.
+    Command: paver update_assets --settings devstack_docker
+
+27) Now we are migartion for lms use. 
+    Command: ./manage.py lms makemigrations --settings=devstack_docker
+
+28) After successfully migartion apply a new command for migrate.
+    Command : ./manage.py lms migrate --settings=devstack_docker
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+29) The same step for studio:
+
+30) Now first of we go to cms bash.
+    Command: docker exec -it edx.devstack.studio bash
+31) First goto virtual env edxapp.
+    Command: source /edx/app/edxapp/edxapp_env && cd /edx/app/edxapp/
+
+32) After the bash we take clone again for studio edx-platform.
+    Command: git clone https://github.com/edx/edx-platform.git
+
+33) After this we are go to the inside the created edx-plarfrom.
+    Command: source /edx/app/edxapp/edxapp_env && cd/edx/app/edxapp/edx-platform
+
+34) Now we get checkout of koa.master inside the edx-platform.
+    Command : git checkout open-release/koa.master
+
+35) Editor is not installed before so we need to install it seperately.
+    Command : apt-get install nano
+
+36) This command use for updating static files.
+    Command : paver update_assets --settings devstack_docker
+
+37) Note: Now we don't need a migartion again because the both side lms and studio database are same so we don't apply here migration.
+
+38) Now we can direct only migrate for studio.
+    Command : ./manage.py cms migrate --settings=devstack_docker
+
+39) Now it's successfully completed the migartion.
+
+40) Now run the LMS in chrome browser : localhost:18000
+                Studio in chrome browser : localhost:18010
+
+41) Create superuser go to inside the lms bash and active your environment.
+    Command for lms bash : docker exec -it edx.devstack.lms bash
+    Command for activate environment : source /edx/app/edxapp/edxapp_env && cd /edx/app/edxapp/edx-platform
+
+42) After this we can create superuser.
+    Command : ./manage.py cms createsuperuser --settings=devstack_docker
